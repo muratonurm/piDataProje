@@ -14,7 +14,7 @@ namespace Uygulama.Models.DataContext
 
         public PiDataDBContext(DbContextOptions options) : base(options)
         {
-
+            //yorum
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
