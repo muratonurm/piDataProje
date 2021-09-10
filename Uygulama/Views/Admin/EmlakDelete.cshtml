@@ -1,0 +1,64 @@
+﻿@model Uygulama.Models.Models.Emlak
+
+@{
+    ViewData["Title"] = "EmlakDelete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>@Model.EmlakAdi işletmesinin kaydını silmek istediğinize eminmisiniz?</h1>
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            İşletme Adı
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmlakAdi)
+        </dd>
+
+        <dt>
+            Telefon
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefon)
+        </dd>
+
+        <dt>
+            Adres
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adres)
+        </dd>
+
+        <dt>
+            Yetkili
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Yetkili)
+        </dd>
+        <dt>
+            Eposta
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EPosta)
+        </dd>
+        <dt>
+            Kuruluş Tarihi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KurulusTarihi)
+        </dd>
+
+    </dl>   
+    <form asp-action="EmlakDelete">
+         
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Geri Dön</a> |
+        <a asp-action="EmlakEdit" asp-route-id="@Model.EmlakId">Güncelle</a>
+    </form>
+</div>
+

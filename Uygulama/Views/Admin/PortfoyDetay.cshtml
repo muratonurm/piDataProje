@@ -1,0 +1,90 @@
+﻿@model Uygulama.Models.Models.Portfoy
+@{
+    ViewData["Title"] = "PortfoyDetay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+
+    <div style="text-align:center">
+        <h4 class="room_d_title"> <b> @Model.IlanBasligi </b></h4>
+    </div>
+    <div style="text-align:center">
+        <h4 class="room_d_title"><span>@Model.Aciklama</span> </h4>
+    </div>
+    <table style="width: 100%;">
+        <tbody>
+            <tr>
+                <td style="width: 50.0000%;"> <b style="float:right">Oda Sayısı :</b><br></td>
+                <td style="width: 50.0000%;">@Model.OdaSayisi<br></td>
+            </tr>
+            <tr>
+                <td style="width: 50.0000%;"><b style="float:right">Isınma :</b><br></td>
+                <td style="width: 50.0000%;">@Model.Isınma<br></td>
+            </tr>
+            <tr>
+                <td style="width: 50.0000%;"><b style="float:right">Kat :</b><br></td>
+                <td style="width: 50.0000%;">@Model.Kat<br></td>
+            </tr>
+            <tr>
+                <td style="width: 50.0000%;"><b style="float:right">Fiyat :</b></td>
+                <td style="width: 50.0000%;">@Model.Fiyat TL<br></td>
+            </tr>
+            <tr>
+                <td style="width: 50.0000%;"><b>İlan Durumu :</b><br></td>
+                <td style="width: 50.0000%;">@Model.Tip.Durum.DurumAd<br></td>
+            </tr>
+            <tr>
+                <td style="width: 50.0000%;"><b>İlan tipi :</b><br></td>
+                <td style="width: 50.0000%;">@Model.Tip.TipAdi<br></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table style="width: 100%;">
+        <tbody>
+            <tr>
+                <td style="width: 100%;">
+                    <p style="text-align:center">
+                        <b>Adres Bilgileri</b>
+                    </p> <br>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table style="width: 100%>;">
+        <tbody>
+            <tr>
+                <td style="width: 50.0000%;"><b>İl :</b><br></td>
+                <td style="width: 50.0000%;">@Model.Mahalleler.Ilceler.Sehirler.SehirAd<br></td>
+            </tr>
+            <tr>
+                <td style="width: 50.0000%;"><b>İlçe :</b><br></td>
+                <td style="width: 50.0000%;">@Model.Mahalleler.Ilceler.IlceAd<br></td>
+            </tr>
+            <tr>
+                <td style="width: 50.0000%;"><b>Mahalle :</b><br></td>
+                <td style="width: 50.0000%;">@Model.Mahalleler.MahalleAdi<br></td>
+            </tr>
+
+        </tbody>
+    </table>
+
+
+
+</div>
+<button id="print" class="btn btn-danger">Yazdır</button>
+@section Scripts
+{
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/printThis/printThis.js"></script>
+
+    <script>
+        $("#print").click(function () {
+            $('.container').printThis();
+        })
+    </script>
+}
+<style>
+   
+</style>

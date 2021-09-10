@@ -1,0 +1,150 @@
+﻿@model Uygulama.Models.Models.Portfoy
+@{
+    ViewData["Title"] = "PortfoyCreate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Styles
+{
+
+    <script src="~/lib/jquery/jquery.min.js"></script>
+}
+<form method="post" action="/Admin/PortfoyCreate/@ViewBag.id" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+    <div class="form-group ">
+        <label for="cemail" class="control-label col-lg-2">Şehir Seç<span class="required">*</span></label>
+        <div class="col-lg-10">
+            @if (ViewBag.SehirList != null)
+            {
+                @Html.DropDownListFor(model => model.SehirId, ViewBag.SehirList as SelectList, "--Sehir Seciniz--", new { @class = "form-control", required = "Required" })
+            }
+        </div>
+    </div>
+    <div class="form-group ">
+        <label for="cemail" class="control-label col-lg-2">İlçe Seç<span class="required">*</span></label>
+        <div class="col-lg-10">
+            @Html.DropDownListFor(model => model.IlceId, new SelectList(" "), "--Ilce Seciniz--", new { @class = "form-control", required = "Required" })
+        </div>
+    </div>
+    <div class="form-group ">
+        <label for="cemail" class="control-label col-lg-2">Mahalle Seç<span class="required">*</span></label>
+        <div class="col-lg-10">
+            @Html.DropDownListFor(model => model.MahalleId, new SelectList(" "), "--Mahalle Seciniz--", new { @class = "form-control", required = "Required" })
+        </div>
+    </div>
+    <div class="form-group ">
+        <label for="cemail" class="control-label col-lg-2">Durum Seç<span class="required">*</span></label>
+        <div class="col-lg-10">
+            @if (ViewBag.DurumList != null)
+            {
+                @Html.DropDownListFor(model => model.DurumId, ViewBag.DurumList as SelectList, "--Durum Seciniz--", new { @class = "form-control", required = "Required" })
+            }
+        </div>
+    </div>
+    <div class="form-group ">
+        <label for="cemail" class="control-label col-lg-2">Tip Seç <span class="required">*</span></label>
+        <div class="col-lg-10">
+            @Html.DropDownListFor(model => model.TipId, new SelectList(" "), "--Tip Seciniz--", new { @class = "form-control", required = "Required" })
+        </div>
+    </div>
+    <div class="form-group ">
+        <label for="cname" class="control-label col-lg-2">Isınma<span class="required">*</span></label>
+        <div class="col-lg-10">
+            @Html.DropDownList("Isınma", Html.GetEnumSelectList(typeof(Uygulama.Models.Models.Isınma)), "Isınma", new { @class = "form-control", required = "Required" })
+        </div>
+    </div>
+    <div class="form-group ">
+        <label for="cname" class="control-label col-lg-2">İlan Baslıgı <span class="required">*</span></label>
+        <div class="col-lg-10">
+            <input class="form-control" id="IlanBasligi" name="IlanBasligi" minlength="2" type="text" required />
+        </div>
+    </div>
+    <div class="form-group ">
+        <label for="cname" class="control-label col-lg-2">Açıklama <span class="required">*</span></label>
+        <div class="col-lg-10">
+            <input class="form-control" id="Aciklama" name="Aciklama" minlength="2" type="text" required />
+        </div>
+    </div>
+    <div class="form-group ">
+        <label for="cname" class="control-label col-lg-2">Oda Sayısı <span class="required">*</span></label>
+        <div class="col-lg-10">
+            <input class="form-control" id="OdaSayisi" name="OdaSayisi" minlength="2" type="text" required />
+        </div>
+    </div>
+    <div class="form-group ">
+        <label for="cname" class="control-label col-lg-2">Fiyat <span class="required">*</span></label>
+        <div class="col-lg-10">
+            <input class="form-control" id="Fiyat" name="Fiyat" minlength="2" type="text" required />
+        </div>
+    </div>
+    <div class="form-group ">
+        <label for="cname" class="control-label col-lg-2">Kat <span class="required">*</span></label>
+        <div class="col-lg-10">
+            <input class="form-control" id="Kat" name="Kat" minlength="2" type="text" required />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-10">
+            <button class="btn btn-primary" type="submit">Kaydet ve Resim Ekle</button>
+            <button class="btn btn-default" type="button"><a href="/Admin/MusteriIndex/">İptal </a></button>
+        </div>
+    </div>
+</form>
+
+
+@section Scripts
+{
+    <script src="~/lib/datatables.net/jquery.dataTables.min.js"></script>
+    <script src="~/lib/datatables.net-bs4/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#SehirId").change(function () {
+                var sehirid = $(this).val();
+                debugger
+                $.ajax({
+                    type: "post",
+                    url: "/Admin/IlceGetir?SehirId=" + sehirid,
+                    contentType: "html",
+                    success: function (response) {
+                        debugger
+                        $("#IlceId").empty();
+                        $("#IlceId").append(response);
+                    }
+                })
+            })
+            $("#IlceId").change(function () {
+                var ılceid = $(this).val();
+                debugger
+                $.ajax({
+                    type: "post",
+                    url: "/Admin/MahalleGetir?IlceId=" + ılceid,
+                    contentType: "html",
+                    success: function (response) {
+                        debugger
+                        $("#MahalleId").empty();
+                        $("#MahalleId").append(response);
+                    }
+                })
+            })
+
+        })
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#DurumId").change(function () {
+                var durumid = $(this).val();
+                debugger
+                $.ajax({
+                    type: "post",
+                    url: "/Admin/TipGetir?DurumId=" + durumid,
+                    contentType: "html",
+                    success: function (response) {
+                        debugger
+                        $("#TipId").empty();
+                        $("#TipId").append(response);
+                    }
+                })
+            })
+        })
+    </script>
+}

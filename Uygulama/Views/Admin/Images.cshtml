@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewData["Title"] = "Images";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{ 
+    Html.BeginForm("Images", "Admin", FormMethod.Post, new { enctype = "multipart/From-data" });
+    foreach (var item in ViewBag.ilan)
+    {
+        <table>
+            <tr>
+                <td>Resim Seç</td>
+                <td> <input type="file" name="file" /></td>
+                <td> <input type="submit" value="Ekle" class="btn btn-danger"/> </td>
+            </tr>
+        </table>
+    }
+}

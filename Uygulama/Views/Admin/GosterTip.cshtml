@@ -1,0 +1,10 @@
+﻿
+<option value="">--Tip Seçiniz--</option>
+
+@if (ViewBag.TpList != null)
+{
+    foreach (var item in ViewBag.TpList)
+    {
+        <option value="@item.Value">@item.Text </option>
+    }
+}

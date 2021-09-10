@@ -1,0 +1,51 @@
+﻿@model Uygulama.Models.Models.Musteri
+
+@{
+    ViewData["Title"] = "MusteriDelete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>@Model.Tamisim adlı müşterinin kaydını silmek istediğinize emin misiniz? </h3>
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            Müşteri Adı SoyAdı:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tamisim)
+        </dd>
+
+        <dt>
+            Müşteri Telefonu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tel)
+        </dd>
+
+        <dt>
+            Müşteri Adresi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adres)
+        </dd>
+
+        <dt>
+            Müşteri GSM
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GSM)
+        </dd>
+       
+       
+    </dl>
+    
+    <form asp-action="MusteriDelete">
+        <input type="submit" value="Sil" class="btn btn-danger" /> |
+        <a asp-action="MusteriIndex">Geri Dön</a>|
+        <a asp-action="MusteriEdit" asp-route-id="@Model.MusteriId">Güncelle</a>
+    </form>
+</div>

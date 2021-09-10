@@ -1,0 +1,144 @@
+﻿
+@{
+    ViewData["Title"] = "EmlakCreate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="form">
+    @using (Html.BeginForm("EmlakCreate", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "emlak-olustur" }))
+    {
+        @Html.AntiForgeryToken();
+
+        <h1 style="text-align:center">ISLETME KAYDI OLUSTUR</h1>
+
+        <label>
+            <span>İşletme Adı :</span>
+            <input id="EmlakAdi" type="text" name="EmlakAdi" minlength="3" required />
+        </label>
+        <label>
+            <span>İşletme Adresi :</span>
+            <input id="Adres" type="text" name="Adres" required />
+        </label>
+        <label>
+            <span>İletişim Telefon :</span>
+            <input id="Telefon" type="text" name="Telefon" required />
+        </label>
+        <label>
+            <span>Mail Adresi :</span>
+            <input id="EPosta" type="text" name="EPosta" required />
+        </label>
+        <label>
+            <span>Kuruluş Tarihi :</span>
+            <input id="KurulusTarihi" type="date" name="KurulusTarihi" required />
+        </label>
+        <label>
+            <span>Broker :</span>
+            <input id="Yetkili" type="text" name="Yetkili" required />
+        </label>
+        <label>
+            <span> </span>
+            <button type="submit" class="btn btn-danger">Kaydet</button> ||
+            <a href="/Admin/Index/" class="btn btn-default">İptal</a>
+
+        </label>
+
+    }
+</div>
+<style>
+    .emlak-olustur {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 100%;
+        background: #394a59;
+        padding: 25px 15px 25px 10px;
+        font: normal 12px Verdana, Geneva, sans-serif;
+        color: #888;
+        text-shadow: 1px 1px 1px #FFF;
+        border: 1px solid #E4E4E4;
+    }
+
+        .emlak-olustur h1 {
+            font-size: 25px;
+            padding: 0px 0px 10px 40px;
+            display: block;
+            border-bottom: 1px solid #E4E4E4;
+            margin: -10px -15px 30px -10px;
+            
+            color: white;
+        }
+
+            .emlak-olustur h1 > span {
+                display: block;
+                font-size: 11px;
+            }
+
+        .emlak-olustur label {
+            display: block;
+            margin: 0px;
+        }
+
+            .emlak-olustur label > span {
+                float: left;
+                width: 20%;
+                text-align: right;
+                padding-right: 10px;
+                margin-top: 10px;
+                color: white;
+            }
+
+        .emlak-olustur input[type="text"], .emlak-olustur input[type="date"], .emlak-olustur input[type="email"], .emlak-olustur textarea, .emlak-olustur select {
+            border: 1px solid #DADADA;
+            color: #000;
+            height: 30px;
+            margin-bottom: 16px;
+            margin-right: 6px;
+            margin-top: 2px;
+            outline: 0 none;
+            padding: 3px 3px 3px 5px;
+            width: 70%;
+            font-size: 12px;
+            line-height: 15px;
+            box-shadow: inset 0px 1px 4px #ECECEC;
+            -moz-box-shadow: inset 0px 1px 4px #ECECEC;
+            -webkit-box-shadow: inset 0px 1px 4px #ECECEC;
+        }
+
+        .emlak-olustur textarea {
+            padding: 5px 3px 3px 5px;
+        }
+
+        .emlak-olustur select {
+            background: #FFF url('down-arrow.png') no-repeat right;
+            background: #FFF url('down-arrow.png') no-repeat right;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            text-indent: 0.01px;
+            text-overflow: '';
+            width: 70%;
+            height: 35px;
+            line-height: 25px;
+        }
+
+        .emlak-olustur textarea {
+            height: 100px;
+        }
+
+        .emlak-olustur .button {
+            background: #E27575;
+            border: none;
+            padding: 10px 25px 10px 25px;
+            color: #FFF;
+            box-shadow: 1px 1px 5px #B6B6B6;
+            border-radius: 3px;
+            text-shadow: 1px 1px 1px #9E3F3F;
+            cursor: pointer;
+        }
+
+            .emlak-olustur .button:hover {
+                background: #CF7A7A
+            }
+</style>
+
+

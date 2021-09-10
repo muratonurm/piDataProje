@@ -1,0 +1,10 @@
+﻿
+<option value="">--Ilce Seçiniz--</option>
+
+@if (ViewBag.IList != null)
+{
+    foreach (var item in ViewBag.IList)
+    {
+        <option value="@item.Value">@item.Text </option>
+    }
+}
